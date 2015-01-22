@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 顶部代码开始 -->
+<div class="header">
+	<div class="title">
+		汽车评论要素抽取系统 <!-- 这里用换成logo也行：<img src="path/to/logo.png" /> -->
+	</div>
+</div>
+<!-- 顶部代码结束 -->
+<!-- 核心部分开始 -->
+<div class="main">
+	<div class="left">
+		<textarea class="textarea" placeholder="请输入待分语句" name="source" required></textarea>
+	</div>
+	<div class="middle">
+		<button class="btn btn-default btn-sm" id="analysis">分析</button>
+	</div>
+	<div class="right">
+		<textarea class="textarea" name="result"></textarea>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="footer">
+		powered by 北京理工大学 计算机学院 自然语言处理实验室  | 合作联系：<a target="_blank" href="http://weibo.com/215007356">@教育关系国家</a>
+</div>
+{% endblock %}

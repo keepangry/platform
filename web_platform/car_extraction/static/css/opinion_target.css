@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+* {
+	outline: none;
+}
+
+body {
+	background: url(../img/bg.gif);
+}
+
+.header {
+	background-color: #ddd;
+	padding: 10px 0 12px;
+}
+
+.header .title {
+    text-align:center;
+	width: 960px;
+	margin: 0 auto;
+	font: 36px/1 'Segoe UI','Microsoft Yahei',SimSun,'Wenquanyi Micro Hei',Ubuntu;
+}
+
+.footer {
+	position: absolute;
+	margin: 8px auto 0 auto;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	text-align:center;
+}
+
+.main {
+	width: 960px;
+	margin: 10px auto;
+}
+
+.left, .right {
+	width: 430px;
+	float: left;
+	text-align: center;
+}
+
+.left div {
+	text-align: left;
+}
+
+.middle {
+	width: 100px;
+	float: left;
+	text-align: center;
+}
+
+.middle button {
+	margin-top: 150px;
+}
+
+.clear {
+	clear: both;
+}
+
+textarea {
+	height: 434px;
+	width: 100%;
+	resize: none;
+	margin: 10px 0 20px;
+	text-align: left;
+}
+
+.left textarea {
+	padding-right: 30px!important;
+}
