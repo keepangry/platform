@@ -188,3 +188,5 @@ Prefix dict has been built succesfully.
 [22/Jan/2015 08:22:26] "GET /static/bootstrap/3.3.0/css/bootstrap.min.css HTTP/1.0" 304 0
 [22/Jan/2015 08:22:26] "GET /static/js/opinion_target.js HTTP/1.0" 304 0
 [22/Jan/2015 08:22:26] "GET /static/css/opinion_target.css HTTP/1.0" 304 0
+Error: You don't have permission to access that port.
+Error: That port is already in use.
