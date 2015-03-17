@@ -12,14 +12,15 @@ import os
 def get_jieba_socket(content):
     from socket import *
     HOST='localhost'
-    PORT=2012
-    BUFSIZ=10240
+    PORT=20317
+    BUFSIZ=1024000
     ADDR=(HOST, PORT)
     client=socket(AF_INET, SOCK_STREAM)
     client.connect(ADDR)
     client.send(content)
     data=client.recv(BUFSIZ)
-    result = json.loads(data.decode('utf8'))
+    #result = json.loads(data.decode('utf8'))
+    result = json.loads(data)
     return result['data']
 
 # Create your views here.

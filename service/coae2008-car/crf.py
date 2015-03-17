@@ -24,7 +24,7 @@ class Crf(object):
         import random
         random.seed(seed)
         self.article_list = crf_to_1list(self.crf_data_path)
-        random.shuffle(self.article_list)
+        #random.shuffle(self.article_list)
         count = len(self.article_list)
         sep_i = int(rate*count)
         self.train_list = self.article_list[:sep_i]

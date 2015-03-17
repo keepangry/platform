@@ -66,6 +66,16 @@ textarea {
 	text-align: left;
 }
 
+.show_ {
+	height: 434px;
+	background: #cccccc;
+	overflow: auto;
+	width: 100%;
+	resize: none;
+	margin: 10px 0 20px;
+	text-align: left;
+}
+
 .left textarea {
 	padding-right: 30px!important;
 }

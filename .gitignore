@@ -1,3 +1,4 @@
 *.pyc
 *.out
 .idea
+service/coae2008-car/tmp/*

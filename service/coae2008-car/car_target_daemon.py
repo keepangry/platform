@@ -16,7 +16,7 @@ CRF_TEST = '/usr/local/bin/crf_test'
 
 car_word_jieba_path = BASE_PATH+'output/car_word_jieba'
 #加载领域词库，TODO，应该标注词库的词性，默认名词可以
-#jieba.load_userdict(car_word_jieba_path)
+jieba.load_userdict(car_word_jieba_path)
 
 def jieba_cut(text):
         words = pseg.cut(text)
@@ -44,6 +44,8 @@ def get_crf_result(test_file):
     cmd = [CRF_TEST,'-m '+MODEL_PATH,test_file]
     retcode = os.popen(' '.join(cmd))
     result = retcode.read()
+    print ' '.join(cmd)
+    print result
     result = result.split('\n')
 
     #二维列表，带标注结果 0为词，1为O表示不知道，B为评价对象
@@ -51,7 +53,7 @@ def get_crf_result(test_file):
     for line in result:
         line = line.split('\t')
         if len(line)==4:
-            ret_data.append([line[0],line[2]])
+            ret_data.append([line[0],line[3]])
     return ret_data
 
 
@@ -61,8 +63,8 @@ def get_crf_result(test_file):
 
 def main():
     HOST='localhost'
-    PORT=20318
-    BUFSIZ=102400
+    PORT=20317
+    BUFSIZ=1024000
     ADDR=(HOST, PORT)
     sock=socket(AF_INET, SOCK_STREAM)
     sock.bind(ADDR)

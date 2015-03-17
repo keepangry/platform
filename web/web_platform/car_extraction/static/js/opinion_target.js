@@ -26,7 +26,10 @@ $(function(){
 					async : false, 
 					success : function(data){ // 这里直接返回分完的结果纯文本data，如果是json的话请先解析再赋给右侧框
 						if(data.status==0){
-						    $('.right > textarea').val(data.data);
+							result = parse_to_html(data.data);
+						    //$('.right > textarea').html(result);
+						    $('.show_').html(result);
+						    
 						}else{
 						    alert(data.info);
 						}
@@ -38,6 +41,27 @@ $(function(){
 					}
 				});
 			});
+
+			//解析返回数组，并标红
+			function parse_to_html(arr2v){
+				var content = ""
+				for(var i in arr2v){
+					
+					if(arr2v[i][1]=='B'){
+						content += "<font color='red'>";
+						content += arr2v[i][0];
+						content += '</font> '
+
+					}else{
+						content += arr2v[i][0]+' ';
+					}
+
+					//console.log(content[i]);
+				}
+				console.log(content);
+				return content;
+				//console.log(content)
+			}
 
 
 		});
