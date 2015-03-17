@@ -14,6 +14,8 @@ sock.listen(5)
 while True:
     tcpClientSock, addr=sock.accept()
     try:
+        #print "1"
+        #exit()
         data=tcpClientSock.recv(BUFSIZ)
         jieba_res = " ".join(jieba.cut(data,cut_all=False))
         result = {"data":jieba_res}
