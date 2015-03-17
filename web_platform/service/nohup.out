@@ -1,4 +1,14 @@
-Building prefix dict from /Library/Python/2.7/site-packages/jieba-0.34-py2.7.egg/jieba/dict.txt ...
-Loading model from cache /var/folders/ns/lbf0vl0s1zg53xz_fk0gb_nh0000gn/T/jieba.cache
-Loading model cost 0.686594009399 seconds.
+Building prefix dict from /usr/lib/python2.7/site-packages/jieba/dict.txt ...
+Loading model from cache /tmp/jieba.cache
+Dumping model to file cache /tmp/jieba.cache
+Dump cache file failed.
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/jieba/__init__.py", line 100, in initialize
+    replace_file(fpath, cache_file)
+OSError: [Errno 1] Operation not permitted
+Loading model cost 2.92561912537 seconds.
+Prefix dict has been built succesfully.
+Building prefix dict from /usr/lib/python2.7/site-packages/jieba/dict.txt ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.682361841202 seconds.
 Prefix dict has been built succesfully.
