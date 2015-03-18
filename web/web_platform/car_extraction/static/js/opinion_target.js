@@ -31,7 +31,8 @@ $(function(){
 						    $('.show_').html(result);
 						    
 						}else{
-						    alert(data.info);
+							$('.show_').html('<font color="red">'+data.info+'</font>');
+						    //alert(data.info);
 						}
 					},
 					error : function(XMLHttpRequest, textStatus, errorThrown) {

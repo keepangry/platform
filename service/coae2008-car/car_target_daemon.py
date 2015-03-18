@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from configure import *
 from socket import *
 import jieba
 import jieba.posseg as pseg
@@ -6,7 +7,7 @@ import json
 import os
 from func0317 import *
 import subprocess
-from configure import *
+
 
 
 BASE_PATH = os.getcwd()+'/'
@@ -18,16 +19,22 @@ car_word_jieba_path = BASE_PATH+'output/car_word_jieba'
 #加载领域词库，TODO，应该标注词库的词性，默认名词可以
 jieba.load_userdict(car_word_jieba_path)
 
+#\n 替换值，这个值应该是词库里的一个非常高频的词，目的作为分隔符
+NDEL='豢魧'
+
 def jieba_cut(text):
-        words = pseg.cut(text)
-        seg_list = []
-        for w in words:
-            seg_list.append([w.word, w.flag])
-        return seg_list
+    words = pseg.cut(text)
+    seg_list = []
+    for w in words:
+        seg_list.append([w.word, w.flag])
+    return seg_list
 
 
 #文章内容生成crf格式数据
 def generate_crf_data(text):
+    #因为生成crf文件中\n有其特殊含义，所以，字符中不应有\n，把\r or \n replace为\\n
+    text = text.replace('\r',NDEL).replace('\n',NDEL)
+
     #对text进行替换
 
     tempfile = TEMP_PATH+get_temp_filename()
@@ -44,21 +51,18 @@ def get_crf_result(test_file):
     cmd = [CRF_TEST,'-m '+MODEL_PATH,test_file]
     retcode = os.popen(' '.join(cmd))
     result = retcode.read()
-    print ' '.join(cmd)
-    print result
-    result = result.split('\n')
+    #print result
+    #print '--'*20
+    result = result.strip().split('\n')
+    #print result
 
     #二维列表，带标注结果 0为词，1为O表示不知道，B为评价对象
     ret_data = []
     for line in result:
         line = line.split('\t')
         if len(line)==4:
-            ret_data.append([line[0],line[3]])
+            ret_data.append([line[0].replace(NDEL,'\n'),line[3]])
     return ret_data
-
-
-#test_data = generate_crf_data('我爱北京天安门，特别是开着骐达特别省油。')
-#get_crf_result(test_data)
 
 
 def main():
@@ -78,7 +82,7 @@ def main():
 
             test_data = generate_crf_data(data)
             result = get_crf_result(test_data)
-            result = {"data":result}
+            result = {"data":result,'status':0}
             #result = {"data":data}
             tcpClientSock.send(json.dumps(result).encode("utf-8"))
         except:
