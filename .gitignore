@@ -1,5 +1,7 @@
 *.pyc
 *.out
 .idea
+.DS_Store
 .*
 service/coae2008-car/tmp/*
+service/coae2008-car/source/*
