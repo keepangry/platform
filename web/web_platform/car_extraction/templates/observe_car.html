@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 顶部代码开始 -->
+<div class="header">
+    <div class="title">
+        观察标注数据 <!-- 这里用换成logo也行：<img src="path/to/logo.png" /> -->
+
+        <a href="/">返回</a>
+
+    </div>
+</div>
+<!-- 顶部代码结束 -->
+<!-- 核心部分开始 -->
+<div class="main">
+    
+{{ title }}
+
+{% for text_l in data %}
+    <div>
+    {% for word_l in text_l%}
+        {% if word_l.1 == 'B' %}
+            <font color="red">{{ word_l.0 }}</font>
+        {% else %}
+            {{ word_l.0 }}
+        {% endif %}
+        
+    {% endfor %}
+    </div>
+    <br />
+{% endfor %}
+
+{{ data1 }}
+
+</div>
+
+<!-- <div class="footer">
+        powered by 北京理工大学 计算机学院 自然语言处理实验室  | 合作联系：<a target="_blank" href="http://weibo.com/215007356">@教育关系国家</a>
+</div> -->
+{% endblock %}
